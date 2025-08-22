@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zuhaib • A little about me</title>
+  <meta name="description" content="A tiny, beautiful website by Zuhaib Ali to say hi in style." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,0.08);
+      --card-stroke: rgba(255,255,255,0.18);
+      --text: #e8ecff;
+      --muted: #acb2d6;
+      --primary: #8a5cff; /* lavender */
+      --accent: #ff77aa;  /* pink */
+      --glow: 0 10px 25px rgba(138,92,255,.35), 0 2px 8px rgba(255,119,170,.25);
+    }
+    .light{
+      --bg: #f8f9ff;
+      --card: rgba(255,255,255,0.7);
+      --card-stroke: rgba(10,10,30,0.08);
+      --text: #12131a;
+      --muted: #555b77;
+      --primary: #6b4df7;
+      --accent: #ff5f96;
+      --glow: 0 10px 25px rgba(107,77,247,.25), 0 2px 8px rgba(255,95,150,.20);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text); background:radial-gradient(1200px 1200px at 10% -10%, rgba(255,119,170,.08), transparent 40%),
+                          radial-gradient(1000px 1000px at 110% 10%, rgba(138,92,255,.10), transparent 40%),
+                          var(--bg);
+      overflow-x:hidden; scroll-behavior:smooth;
+    }
+    /* Floating gradient blobs */
+    .blob{position:fixed; inset:auto auto -120px -120px; width:420px; height:420px; filter:blur(40px); opacity:.4; pointer-events:none; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--accent), transparent 60%); animation: float 14s ease-in-out infinite alternate;}
+    .blob.two{inset:-120px -120px auto auto; width:520px; height:520px; background:radial-gradient(circle at 70% 70%, var(--primary), transparent 55%); animation-duration:18s}
+    @keyframes float{to{transform:translate(40px,-20px) scale(1.05); opacity:.55}}
+
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient(to right, rgba(15,20,40,.6), rgba(15,20,40,.3)); border-bottom:1px solid var(--card-stroke)}
+    .nav{max-width:1100px; margin:auto; display:flex; align-items:center; gap:16px; padding:14px 18px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .logo{width:34px; height:34px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg, var(--primary), var(--accent)); box-shadow:var(--glow)}
+    .nav a{color:var(--text); text-decoration:none; opacity:.85}
+    .nav .links{margin-left:auto; display:flex; gap:18px; flex-wrap:wrap}
+    .nav .links a{padding:8px 12px; border-radius:10px; border:1px solid transparent}
+    .nav .links a:hover{border-color:var(--card-stroke); background:var(--card)}
+    .toggle{margin-left:6px; border:none; background:var(--card); color:var(--text); padding:8px 12px; border-radius:12px; cursor:pointer; border:1px solid var(--card-stroke)}
+
+    .container{max-width:1100px; margin:auto; padding:26px 18px}
+
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; align-items:center; gap:28px; padding:50px 0}
+    .tag{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--card-stroke); background:var(--card); font-size:14px; letter-spacing:.2px}
+    h1{font-family:"Playfair Display", serif; font-size: clamp(34px, 5.2vw, 64px); line-height:1.05; margin:14px 0 8px}
+    .subtitle{font-size: clamp(15px, 2.3vw, 18px); color:var(--muted); max-width:60ch}
+    .cta{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .btn{appearance:none; border:none; cursor:pointer; border-radius:14px; padding:12px 16px; font-weight:600; border:1px solid var(--card-stroke); background:var(--card); color:var(--text)}
+    .btn.primary{background:linear-gradient(135deg, var(--primary), var(--accent)); border-color:transparent; box-shadow:var(--glow)}
+
+    .portrait{position:relative; width:min(340px, 88vw); margin-inline:auto}
+    .ring{position:absolute; inset:-12px; border-radius:28px; padding:12px; background:linear-gradient(135deg, rgba(138,92,255,.4), rgba(255,119,170,.45)); filter:blur(.4px)}
+    .photo{position:relative; border-radius:22px; overflow:hidden; border:1px solid var(--card-stroke); background:var(--card)}
+    .photo img{display:block; width:100%; height:auto; filter:saturate(1.05)}
+    .sparkle{position:absolute; right:-10px; top:-10px; font-size:42px; animation: twirl 4.5s ease-in-out infinite}
+    @keyframes twirl{0%{transform:rotate(0)} 50%{transform:rotate(18deg) scale(1.1)} 100%{transform:rotate(0)}}
+
+    section{padding:24px 0}
+    .grid{display:grid; gap:18px}
+    .cards{grid-template-columns:repeat(3, 1fr)}
+    .card{background:var(--card); border:1px solid var(--card-stroke); border-radius:18px; padding:18px; backdrop-filter: blur(8px); box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+    .card h3{margin:2px 0 6px}
+    .muted{color:var(--muted)}
+
+    .qualities{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{border:1px solid var(--card-stroke); background:var(--card); padding:10px 12px; border-radius:999px; font-size:14px}
+
+    .gallery{grid-template-columns:repeat(3, 1fr)}
+    .polaroid{background:#fff; color:#111; padding:10px 10px 16px; border-radius:10px; box-shadow:0 12px 30px rgba(0,0,0,.25); transform:rotate(var(--rot, -1.5deg)); transition:transform .25s ease}
+    .polaroid:hover{transform:rotate(0) translateY(-4px)}
+    .polaroid img{width:100%; height:200px; object-fit:cover; border-radius:8px}
+    .polaroid b{display:block; padding-top:8px}
+
+    .timeline{position:relative; margin:10px 0}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--primary), var(--accent)); opacity:.5}
+    .t-item{position:relative; padding-left:34px; margin:14px 0}
+    .t-item::marker{content:""}
+    .t-dot{position:absolute; left:4px; top:.6rem; width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg, var(--primary), var(--accent)); box-shadow:var(--glow)}
+
+    .contact{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:center}
+    form{display:grid; gap:10px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--card-stroke); background:var(--card); color:var(--text); font:inherit}
+    textarea{min-height:110px; resize:vertical}
+
+    footer{padding:34px 0 60px; text-align:center; color:var(--muted)}
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Mobile tweaks */
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 520px){
+      .gallery{grid-template-columns:1fr}
+      .portrait{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="blob"></div>
+  <div class="blob two"></div>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo">💖</div>
+        <span>Zuhaib</span>
+      </div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <span class="tag">Assalamualaikum 👋 · خوش آمدید</span>
+        <h1>Hey, I’m <span style="background:linear-gradient(135deg,var(--primary),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent">Zuhaib Ali</span></h1>
+        <p class="subtitle">Thoda sa intro: I love building neat little things on the web, making people smile, and drinking chai exactly at sunset. Agar aap yahan tak padh rahi/rahe ho, I’m already grateful. 🙂</p>
+        <div class="cta">
+          <a class="btn primary" href="#about">Get to know me</a>
+          <a class="btn" href="#contact">Say hello</a>
+        </div>
+      </div>
+
+      <div class="portrait">
+        <div class="ring"></div>
+        <div class="photo">
+          <img src="https://uploads.onecompiler.io/42q276mr3/438d325xb/WhatsApp%20Image%202025-02-04%20at%201,16,02%20AM_enhanced.jpeg" alt="Zuhaib portrait placeholder"/>
+          <div class="sparkle">✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="grid cards">
+        <article class="card reveal">
+          <h3>About me</h3>
+          <p class="muted">I’m from Sindh, Pakistan. Currently exploring front‑end dev & a bit of design. Weekend plan: family time, cricket, and hunting the best bun‑kabab in town.</p>
+          <div class="qualities" aria-label="qualities">
+            <span class="pill">Kind‑hearted</span>
+            <span class="pill">Curious</span>
+            <span class="pill">Dependable</span>
+            <span class="pill">Good listener</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <h3>Things I enjoy</h3>
+          <p class="muted">Clean UI, soulful music, late‑night coding, and long walks. Also: chai > coffee (controversial but true ☕️).</p>
+          <ul class="muted">
+            <li>Designing minimal websites</li>
+            <li>Watching sunsets 🌇</li>
+            <li>Sharing lame jokes that somehow work</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <h3>Goals</h3>
+          <p class="muted">Be the person my future self is proud of, ship projects regularly, and spread a little warmth wherever I go.</p>
+          <ol class="timeline">
+            <li class="t-item"><span class="t-dot"></span> Build 3 useful web apps this year</li>
+            <li class="t-item"><span class="t-dot"></span> Learn React deeply</li>
+            <li class="t-item"><span class="t-dot"></span> Travel to Skardu with a camera 📷</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section id="highlights">
+      <h2 style="margin:26px 0 8px; font-size: clamp(22px, 3.2vw, 32px)">Highlights</h2>
+      <p class="muted" style="margin:0 0 14px">Thode se reasons kyun mujhe yaad rakhna chahiye 😉</p>
+      <div class="grid cards">
+        <div class="card reveal">
+          <h3>Respect & kindness</h3>
+          <p class="muted">Mujhe logon ki izzat aur ehtram sab se zyada pasand hai. I keep things gentle and honest.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Quality time</h3>
+          <p class="muted">Sunset walks + good conversation = perfect evening. Listening > talking.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Little surprises</h3>
+          <p class="muted">Random “good luck” texts before exams and chai deliveries in rainy weather. 🌧️</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 style="margin:26px 0 8px; font-size: clamp(22px, 3.2vw, 32px)">Small gallery</h2>
+      <p class="muted" style="margin:0 0 14px">A few photos that feel like me.</p>
+      <div class="grid gallery">
+        <figure class="polaroid reveal" style="--rot:-3deg">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Chai"/>
+          <b>Chai o'clock</b>
+        </figure>
+        <figure class="polaroid reveal" style="--rot:2.3deg">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop" alt="Sunset"/>
+          <b>Golden hour</b>
+        </figure>
+        <figure class="polaroid reveal" style="--rot:-1.2deg">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" alt="Mountains"/>
+          <b>Dream trip: the North</b>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact">
+        <div class="card reveal">
+          <h3>Say hello</h3>
+          <p class="muted">Agar aap yahan tak aa gaye ho, toh bas 'hi' keh do. I’d love that. 💌</p>
+          <form onsubmit="event.preventDefault(); window.open('https://www.instagram.com/zuhaib_ali10/' + encodeURIComponent(document.getElementById('msg').value || 'Hi Zuhaib!'), '_blank')">
+            <input type="text" placeholder="Your name" required>
+            <textarea id="msg" placeholder="Your message…"></textarea>
+            <div style="display:flex; gap:10px; flex-wrap:wrap">
+              <button class="btn primary" type="submit">Send on instagram</button>
+              <a class="btn" href="larikzuhaib191@gmail.com?subject=Hello%20Zuhaib">Or email me</a>
+            </div>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3>Fun facts</h3>
+          <ul class="muted">
+            <li>Can make perfect doodh‑patti ☕️</li>
+            <li>Knows 3 magic tricks (okay 2.5)</li>
+            <li>Writes code that is neat & sweet</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Made with ♥ by Zuhaib · <a href="#" style="color:inherit; text-decoration:underline; opacity:.8">@iamzuhaib</a>
+    </footer>
+  </main>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement; const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme'); if(saved==='light'){root.classList.add('light'); btn.textContent='🌙'}
+    btn.addEventListener('click', ()=>{root.classList.toggle('light'); const l = root.classList.contains('light'); localStorage.setItem('theme', l?'light':'dark'); btn.textContent = l? '🌙':'🌞';});
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    }, {threshold: .15});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Gentle confetti hearts on first click anywhere
+    let popped=false; document.addEventListener('click', (evt)=>{
+      if(popped) return; popped=true; const c = 36; for(let i=0;i<c;i++){spawnHeart(evt.clientX, evt.clientY)};
+      setTimeout(()=>popped=false, 3000);
+    });
+    function spawnHeart(x,y){
+      const h = document.createElement('div'); h.textContent = '❤'; h.style.position='fixed'; h.style.left=x+'px'; h.style.top=y+'px'; h.style.transform=`translate(-50%, -50%) rotate(${(Math.random()*40-20).toFixed(1)}deg)`; h.style.fontSize = (16+Math.random()*22)+'px'; h.style.opacity='1'; h.style.transition='all 1200ms ease'; h.style.zIndex=9999; document.body.appendChild(h);
+      const dx = (Math.random()*2-1)*120; const dy = - (100 + Math.random()*140);
+      requestAnimationFrame(()=>{ h.style.left = (x+dx)+'px'; h.style.top=(y+dy)+'px'; h.style.opacity='0';});
+      setTimeout(()=>h.remove(), 1300);
+    }
+  </script>
+</body>
+</html>
